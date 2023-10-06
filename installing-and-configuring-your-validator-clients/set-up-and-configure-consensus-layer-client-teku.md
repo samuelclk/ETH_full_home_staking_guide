@@ -211,8 +211,6 @@ Once you're done, save with `Ctrl+O` and `Enter`, then exit with `Ctrl+X`. Under
 9. `--metrics-enabled`: Enable monitoring of beacon node metrics
 10. `--doppelganger-detection-enabled`: Helps prevents slashing due to double signing by checking if your validator keys are already active on the network. _**Not a fool-proof solution.**_
 
-To recap where you placed your&#x20;
-
 ### Start the Teku Validator Client service
 
 Reload the systemd daemon to register the changes made, start the Teku Validator Client, and check its status to make sure its running.
