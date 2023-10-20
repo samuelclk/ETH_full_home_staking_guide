@@ -186,7 +186,7 @@ ExecStart=/usr/local/bin/teku/bin/teku vc \
   --validator-keys=/var/lib/teku/validator_keys:/var/lib/teku/validator_keys \
   --beacon-node-api-endpoint=http://localhost:5051,http://<backup_beacon_node>:<http/rest_port_number>
   --validators-proposer-default-fee-recipient=<designated wallet address> \
-  --validators-proposer-blinded-blocks-enabled=true\
+  --validators-proposer-blinded-blocks-enabled=true \
   --validators-graffiti="<yourgraffiti>" \
   --doppelganger-detection-enabled=true 
 
