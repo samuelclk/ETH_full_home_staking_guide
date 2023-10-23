@@ -4,6 +4,8 @@
 
 ```bash
 sudo apt install -y default-jre
+sudo apt install openjdk-17-jdk
+
 ```
 
 ### Install Teku
