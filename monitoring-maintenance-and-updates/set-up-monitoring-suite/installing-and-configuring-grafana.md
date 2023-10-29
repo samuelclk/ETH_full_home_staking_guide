@@ -6,7 +6,7 @@ Install Grafana using the APT package manager - Download the Grafana GPG key, ad
 
 ```bash
 wget -q -O - https://packages.grafana.com/gpg.key | sudo apt-key add -
-sudo add-apt-repository "deb <https://packages.grafana.com/oss/deb> stable main"
+sudo add-apt-repository "deb https://packages.grafana.com/oss/deb> stable main"
 sudo apt update
 apt-cache policy grafana
 ```
