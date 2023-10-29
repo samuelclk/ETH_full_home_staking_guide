@@ -39,7 +39,7 @@ sudo systemctl start grafana-server
 sudo systemctl status grafana-server
 ```
 
-The output should say Prometheus is **“active (running)”.** Press CTRL-C to exit and Grafana will continue to run.
+The output should say Grafana is **“active (running)”.** Press CTRL-C to exit and Grafana will continue to run.
 
 Use the following command to check the logs for any warnings or errors:
 
@@ -49,7 +49,7 @@ sudo journalctl -fu grafana-server
 
 Press `CTRL-C` to exit.
 
-If the Prometheus service is running smoothly, we can now enable it to fire up automatically when rebooting the system.
+If the Grafana service is running smoothly, we can now enable it to fire up automatically when rebooting the system.
 
 ```bash
 sudo systemctl enable grafana-server
