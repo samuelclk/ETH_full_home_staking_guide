@@ -4,13 +4,13 @@
 
 If you are coming from Github, check out the Gitbook version here for a better reading experience - [https://stakesaurus.gitbook.io/eth-full-home-staking-setup-guide/](https://stakesaurus.gitbook.io/eth-full-home-staking-setup-guide/)
 
-### Need 1-to-1 guided support or want to join a hands-on workshop? Drop by and say hi to us!
+### Need 1-to-1 guided support? Drop by and say hi to us!
 
 {% embed url="https://t.me/stakesaurus" %}
 
-Or visit our website to find out more about what we believe in!
+### Or join our next small group workshop
 
-{% embed url="https://www.stakesaurus.com/" %}
+{% embed url="https://lu.ma/gm8a7z3b" %}
 
 ## Credits
 
