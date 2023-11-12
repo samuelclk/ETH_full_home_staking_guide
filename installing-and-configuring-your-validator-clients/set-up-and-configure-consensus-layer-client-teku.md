@@ -58,6 +58,7 @@ Create a directory for Teku to store the blockchain and validator data of the Co
 sudo mkdir -p /var/lib/teku
 sudo mv ~/validator_keys /var/lib/teku
 sudo chown -R teku:teku /var/lib/teku
+sudo chmod 700 /var/lib/teku
 ```
 
 {% hint style="info" %}
