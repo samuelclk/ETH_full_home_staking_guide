@@ -96,7 +96,8 @@ ExecStart=/usr/local/bin/nethermind/Nethermind.Runner \
   --Sync.SnapSync true \
   --Sync.AncientBodiesBarrier 11052984 \
   --Sync.AncientReceiptsBarrier 11052984 \
-  --Metrics.Enabled true 
+  --Metrics.Enabled true \
+  --Metrics.PushGatewayUrl http://localhost:9091/metrics
   
 [Install]
 WantedBy=default.target
