@@ -23,7 +23,7 @@
 [install-the-os.md](../hardware-and-systems-setup/install-the-os.md)
 {% endcontent-ref %}
 
-3\) Once your USB drive is flashed with your preferred OS, plug it into your working device and reboot the device to go into the boot menu. Depending on your system, you might need to hold `F2`, `F10`, `F12`, or `ESC` during the rebooting process to bring up the boot menu.
+3\) Once your USB drive is flashed with your preferred OS, plug it into your working device and reboot the device to go into the boot menu. Depending on your system, you might need to hold `F2`, `F10`, `F12`, or `ESC` during the rebooting process to bring up the boot menu. If it boots to a `grub>` prompt awaiting a command, type `exit` and press Enter.
 
 4\) Once you see the boot menu, select the option to boot up from your USB drive instead of your usual storage volume and you should see the following screen.
 
