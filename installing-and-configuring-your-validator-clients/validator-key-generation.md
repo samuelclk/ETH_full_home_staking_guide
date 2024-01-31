@@ -173,7 +173,7 @@ cd ~/validator_keys
 ls
 ```
 
-With the `validator_signing_keystore_file_name` copied, create the password file.
+With the `validator_signing_keystore_file_name` copied (without the `.json` file extension), create the password file.
 
 <pre><code>sudo nano <a data-footnote-ref href="#user-content-fn-1">&#x3C;validator_signing_keystore_file_name></a>.txt
 </code></pre>
