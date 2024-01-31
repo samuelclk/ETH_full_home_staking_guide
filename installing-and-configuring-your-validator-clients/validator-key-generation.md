@@ -40,6 +40,7 @@ Connect your OS-on-a-stick to a trusted WiFi network and fire up the Linux termi
 Install system dependencies - `pip3` & `virtualenv`. _**Note:** Remove the `sudo` prefix for each line if your system returns an error._
 
 ```bash
+sudo add-apt-repository universe
 sudo apt-get update -y && sudo apt-get upgrade -y
 sudo apt install python3-venv python3-pip
 sudo apt install python3-virtualenv
