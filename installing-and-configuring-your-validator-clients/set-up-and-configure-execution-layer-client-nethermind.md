@@ -26,6 +26,7 @@ sudo apt-get install unzip libsnappy-dev libc6-dev libc6 -y
 
 ```bash
 cd
+sudo apt install curl
 curl -LO https://nethdev.blob.core.windows.net/builds/nethermind-1.20.1-9f39c0c7-linux-x64.zip
 echo "444bf523e0db9c23243b365e717b5b15 nethermind-1.20.1-9f39c0c7-linux-x64.zip" | md5sum --check
 ```
