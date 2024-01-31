@@ -63,6 +63,7 @@ git clone -b master --single-branch https://github.com/ethereum/staking-deposit-
 Install the dependency packages for running the tool:
 
 ```bash
+cd staking-deposit-cli/
 python3 setup.py install
 pip3 install -r requirements.txt
 ```
