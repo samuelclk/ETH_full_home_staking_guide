@@ -99,7 +99,7 @@ ip a
 
 <figure><img src="../.gitbook/assets/image (74).png" alt=""><figcaption></figcaption></figure>
 
-Your NUC's IP address will be located under the `wl01` interface - e.g. 192.168.xx.xx.&#x20;
+Your NUC's IP address will be located under the `wl01` interface - e.g. 192.168.xx.xx.&#x20; If you do not see an IP address, try `hostname -I` instead.
 
 Write this down as you will need to use this IP address to access your NUC remotely and we will call this the `node_IP_address` moving forward.
 
