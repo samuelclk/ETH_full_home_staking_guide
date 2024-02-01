@@ -8,9 +8,15 @@ If you are coming from Github, check out the Gitbook version here for a better r
 
 {% embed url="https://t.me/stakesaurus" %}
 
-### Or join our next small group workshop
+### If you found this helpful, consider supporting Stakesaurus in one of two ways below!&#x20;
 
-{% embed url="https://lu.ma/gm8a7z3b" %}
+* [Stakesaurus' liquid staking ETH vault powered by Stakewise V3](https://app.stakewise.io/vault/0x649955f4189c3921df60e25f58cb1e81070fedb0)
+
+{% embed url="https://app.stakewise.io/vault/0x649955f4189c3921df60e25f58cb1e81070fedb0" %}
+
+* Buy me a coffee!
+
+{% embed url="https://www.buymeacoffee.com/stakesaurus" %}
 
 ## Credits
 
