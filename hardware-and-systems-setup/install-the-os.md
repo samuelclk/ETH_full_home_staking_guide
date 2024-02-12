@@ -92,14 +92,14 @@ sudo apt install openssh-server
 3\) Get the IP address of your NUC device within your Node Router subnet.
 
 ```sh
-ip a
+hostname -I | awk '{print $1}'
 ```
 
 **Expected output:**
 
-<figure><img src="../.gitbook/assets/image (74).png" alt=""><figcaption></figcaption></figure>
-
-Your NUC's IP address will be located under the `wl01` interface - e.g. 192.168.xx.xx.&#x20;
+```sh
+192.168.x.xxx
+```
 
 Write this down as you will need to use this IP address to access your NUC remotely and we will call this the `node_IP_address` moving forward.
 
