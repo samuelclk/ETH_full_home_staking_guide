@@ -38,6 +38,7 @@ RAM     Swap Size
 Create swap file:
 
 ```bash
+sudo swapoff -a
 sudo fallocate -l 6G /swapfile
 sudo chmod 600 /swapfile
 sudo mkswap /swapfile

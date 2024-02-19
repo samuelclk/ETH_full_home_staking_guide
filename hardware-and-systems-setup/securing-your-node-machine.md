@@ -82,10 +82,10 @@ sudo nano /etc/ssh/sshd_config
 ```
 
 1. Find the line `Port 22` in the file. Change it to your chosen port number and then uncomment the line by removing the `#` prefix (if it exists)
-2. Uncomment `#AuthorizedKeysFile` if it is commented (by removing the `#` in front of it)
-3. Change `KbdInteractiveAuthentication yes` to `KbdInteractiveAuthentication no` and uncomment (by removing the `#` in front of it)
-4. Change `PasswordAuthentication yes` to `PasswordAuthentication no` and uncomment (by removing the `#` in front of it)
-5. Change `#PermitRootLogin prohibit-password` to `PermitRootLogin no` , removing the `#` prefix
+2. Change `#PermitRootLogin prohibit-password` to `PermitRootLogin no` , removing the `#` prefix
+3. Uncomment `#AuthorizedKeysFile` if it is commented (by removing the `#` in front of it)
+4. Change `KbdInteractiveAuthentication yes` to `KbdInteractiveAuthentication no` and uncomment (by removing the `#` in front of it)
+5. Change `PasswordAuthentication yes` to `PasswordAuthentication no` and uncomment (by removing the `#` in front of it)
 
 Once you're done, save with `Ctrl+O` and `Enter`, then exit with `Ctrl+X`.
 

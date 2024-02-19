@@ -23,7 +23,7 @@
 [install-the-os.md](../hardware-and-systems-setup/install-the-os.md)
 {% endcontent-ref %}
 
-3\) Once your USB drive is flashed with your preferred OS, plug it into your working device and reboot the device to go into the boot menu. Depending on your system, you might need to hold `F2`, `F10`, `F12`, or `ESC` during the rebooting process to bring up the boot menu.
+3\) Once your USB drive is flashed with your preferred OS, plug it into your working device and reboot the device to go into the boot menu. Depending on your system, you might need to hold `F2`, `F10`, `F12`, or `ESC` during the rebooting process to bring up the boot menu. If it boots to a `grub>` prompt awaiting a command, type `exit` and press Enter.
 
 4\) Once you see the boot menu, select the option to boot up from your USB drive instead of your usual storage volume and you should see the following screen.
 
@@ -40,6 +40,7 @@ Connect your OS-on-a-stick to a trusted WiFi network and fire up the Linux termi
 Install system dependencies - `pip3` & `virtualenv`. _**Note:** Remove the `sudo` prefix for each line if your system returns an error._
 
 ```bash
+sudo add-apt-repository universe
 sudo apt-get update -y && sudo apt-get upgrade -y
 sudo apt install python3-venv python3-pip
 sudo apt install python3-virtualenv
@@ -62,6 +63,7 @@ git clone -b master --single-branch https://github.com/ethereum/staking-deposit-
 Install the dependency packages for running the tool:
 
 ```bash
+cd staking-deposit-cli/
 python3 setup.py install
 pip3 install -r requirements.txt
 ```
@@ -171,7 +173,7 @@ cd ~/validator_keys
 ls
 ```
 
-With the `validator_signing_keystore_file_name` copied, create the password file.
+With the `validator_signing_keystore_file_name` copied (without the `.json` file extension), create the password file.
 
 <pre><code>sudo nano <a data-footnote-ref href="#user-content-fn-1">&#x3C;validator_signing_keystore_file_name></a>.txt
 </code></pre>
