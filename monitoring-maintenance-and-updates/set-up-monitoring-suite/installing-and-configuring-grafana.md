@@ -155,7 +155,30 @@ sudo systemctl enable grafana-server
 1. go to `http://<yourserverip>:3000/`
 2. Enter `admin` for both username and password
 3. Select `Data Sources` and click on `Add data source` , then choose **Prometheus** and enter [**http://localhost:9090**](http://localhost:9090) for the URL
-4. Setup the execution client (Nethermind) dashboard - On the left menu bar, click on **Dashboards >> Import**
-   * On the Import screen, paste the JSON text from [here](https://raw.githubusercontent.com/NethermindEth/metrics-infrastructure/master/grafana/dashboards/nethermind.json)
-5. Setup the consensus client (Teku) dashboard - On the left menu bar, click on **Dashboards >> Import**
-   * On the Import screen, paste the JSON text from [here](https://raw.githubusercontent.com/sigp/lighthouse-metrics/master/dashboards/Summary.json)
+4. Setup dashboards - On the left menu bar, click on **Dashboards >> Import**
+   * Execution client dashboard&#x20;
+     * **Nethermind:** Paste the JSON text from [here](Nethermind-grafana-JSON)
+     * **Besu:** Enter the dashboard ID - `10273`
+     * **Geth:** Enter the dashboard ID - `13877`
+   * Consensus client dashboard&#x20;
+     * **Teku:** Enter the dashboard ID - `16737`
+       * **Nimbus:** Paste the JSON text from [here](https://github.com/metanull-operator/eth2-grafana/blob/master/nimbus/eth2-grafana-nimbus-dashboard.json)
+       * **Lodestar:** Paste the JSON text from [here](https://raw.githubusercontent.com/ChainSafe/lodestar/stable/dashboards/lodestar\_summary.json)
+       * **Lighthouse**: Paste the JSON text from [here](https://raw.githubusercontent.com/sigp/lighthouse-metrics/master/dashboards/Summary.json)
+       * **Prysm:** Paste the JSON text from [here](https://raw.githubusercontent.com/GuillaumeMiralles/prysm-grafana-dashboard/master/less\_10\_validators.json)
+   * Node Exporter dashboard - Paste the JSON text [here](Node-exporter-grafana-json)
+5. Select `Prometheus` from the "Select a Prometheus data source here" drop down field.
+
+### Screenshot samples of Grafana Dashboard
+
+#### Nethermind:
+
+<figure><img src="../../.gitbook/assets/image (87).png" alt=""><figcaption></figcaption></figure>
+
+#### Teku:
+
+<figure><img src="../../.gitbook/assets/image (88).png" alt=""><figcaption></figcaption></figure>
+
+#### Node Exporter:
+
+<figure><img src="../../.gitbook/assets/image (89).png" alt=""><figcaption></figcaption></figure>
