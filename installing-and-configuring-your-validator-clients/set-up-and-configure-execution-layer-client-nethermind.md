@@ -11,7 +11,7 @@ sudo mkdir -p /var/lib/jwtsecret
 openssl rand -hex 32 | sudo tee /var/lib/jwtsecret/jwt.hex > /dev/null
 ```
 
-We will be pointing the configuration files of the Nethermind and Teku software to this JWT file later.
+We will be pointing the configuration files of the execution and consensus clients to this JWT file later.
 
 ### Install dependencies - Unzip, Snappy & the GNU C Library
 
@@ -20,14 +20,14 @@ sudo apt-get update
 sudo apt-get install unzip libsnappy-dev libc6-dev libc6 -y
 ```
 
-### Install Nethermind and configure the service
+### Download Nethermind and configure the service
 
 [Download](https://downloads.nethermind.io/) the latest version of Nethermind and run the checksum verification process to ensure that the downloaded file has not been tampered with.
 
 ```bash
 cd
-curl -LO https://nethdev.blob.core.windows.net/builds/nethermind-1.20.1-9f39c0c7-linux-x64.zip
-echo "444bf523e0db9c23243b365e717b5b15 nethermind-1.20.1-9f39c0c7-linux-x64.zip" | md5sum --check
+curl -LO https://github.com/NethermindEth/nethermind/releases/download/1.25.4/nethermind-1.25.4-20b10b35-linux-x64.zip
+echo "05848eaab4b1b621054ff507e8592d17 nethermind-1.25.4-20b10b35-linux-x64.zip" | md5sum --check
 ```
 
 {% hint style="info" %}
@@ -43,15 +43,15 @@ Make sure to choose the amd64 version. Right click on the linked text and select
 _**Expected output:** Verify output of the checksum verification_
 
 ```
-nethermind-1.20.1-9f39c0c7-linux-x64.zip: OK
+nethermind-1.25.4-20b10b35-linux-x64.zip: OK
 ```
 
 If checksum is verified, extract the files and move them into the `(/usr/local/bin)` directory for neatness and best practice. Then, clean up the duplicated copies.
 
 ```bash
-unzip nethermind-1.20.1-9f39c0c7-linux-x64.zip -d nethermind
+unzip nethermind-1.25.4-20b10b35-linux-x64.zip -d nethermind
 sudo cp -a nethermind /usr/local/bin/nethermind
-rm -r nethermind-1.20.1-9f39c0c7-linux-x64.zip nethermind
+rm -r nethermind-1.25.4-20b10b35-linux-x64.zip nethermind
 ```
 
 Create an account (`nethermind`) without server access for Nethermind to run as a background service. This type of user account will not have root access so it restricts potential attackers to only the Nethermind service in the unlikely event that they manage to infiltrate via a compromised client update.
@@ -94,10 +94,12 @@ ExecStart=/usr/local/bin/nethermind/Nethermind.Runner \
   --datadir /var/lib/nethermind \
   --JsonRpc.JwtSecretFile /var/lib/jwtsecret/jwt.hex \
   --Sync.SnapSync true \
-  --Sync.AncientBodiesBarrier 11052984 \
-  --Sync.AncientReceiptsBarrier 11052984 \
+  --JsonRpc.Enabled true \
+  --JsonRpc.Host <Internal_IP_address> \
+  --JsonRpc.Port 8545 \
+  --HealthChecks.Enabled true \
   --Metrics.Enabled true \
-  --Metrics.PushGatewayUrl http://localhost:9091/metrics
+  --Metrics.PushGatewayUrl http://localhost:9091/metrics 
   
 [Install]
 WantedBy=default.target
@@ -107,12 +109,16 @@ Once you're done, save with `Ctrl+O` and `Enter`, then exit with `Ctrl+X`. Under
 
 **Nethermind configuration summary:**
 
-1. `--config`: Run the on the mainnnet
+1. `--config`: Run the on the Mainnet
 2. `--datadir`: The directory for Nethermind to store the blockchain data of the execution layer
 3. `--JsonRpc.JwtSecretFile`: The directory pointing to the JWT secret we generated earlier
 4. `--Sync.SnapSync`: Use Nethermind's snap sync feature. More information [here](https://docs.nethermind.io/nethermind/ethereum-client/sync-modes)
-5. `--Sync.AncientBodiesBarrier`: Prunes blocks before the [block](https://github.com/eth-clients/eth2-networks/blob/master/shared/mainnet/deposit\_contract\_block.txt) when the deposit contract became active.
-6. `--Metrics.Enabled`: Enable monitoring metrics on the Nethermind service
+5. `--JsonRpc.Enabled:` Enables the JSON-RPC service on http and websocket. This is so that DVT clients such as the Diva service can connect to your execution client &#x20;
+6. `--JsonRpc.Host:` Sets the IP address to connect to the JSON RPC service. Use the internal IP address of your device here (check by running `ip a`) - e.g. `192.168.x.x`. Defaults to `127.0.0.1` otherwise
+7. `--JsonRpc.Port`: Sets the port to connect to the JSON RPC service that will be used by the Diva service. You may choose any unused port number but remember to allow incoming connections into your chosen port in your firewall (`ufw`) rules. Defaults to 8545
+8. `--HealthChecks.Enabled:` Enables you to test the connection to and health of your Nethermind service using the `curl` command - e.g. `curl http://<Internal_IP_address>:8545/health`
+9. `--Metrics.Enabled`: Enable monitoring metrics on the Nethermind service
+10. `--Metrics.PushGatewayUrl:` Pushes metrics to your monitoring suite&#x20;
 
 ### Start Nethermind
 
@@ -124,9 +130,9 @@ sudo systemctl start nethermind.service
 sudo systemctl status nethermind.service
 ```
 
-**Expected output:** The output should say Nethermind is **“active (running)”.** Press CTRL-C to exit and Nethermind will continue to run. It should take 48 - 72 hours for Nethermind to sync on the Mainnet.
+**Expected output:** The output should say Nethermind is **“active (running)”.** Press CTRL-C to exit and Nethermind will continue to run. It should take around 3 days for Nethermind to sync on the Mainnet.
 
-<figure><img src="../.gitbook/assets/image (24).png" alt=""><figcaption><p>sudo systemctl status nethermind.service</p></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (24).png" alt=""><figcaption><p>Example output on the mainnet</p></figcaption></figure>
 
 Use the following command to check the logs of Nethermind’s syncing process. Watch out for any warnings or errors.
 
@@ -140,6 +146,10 @@ sudo journalctl -fu nethermind -o cat | ccze -A
 <figure><img src="../.gitbook/assets/image.png" alt=""><figcaption></figcaption></figure>
 
 Press `CTRL-C` to exit.
+
+**Note:** You will also see the following error related to Pushgateway. This is expected because we have not installed and configured the Pushgateway service used for monitoring at this point.
+
+<figure><img src="../.gitbook/assets/image (90).png" alt=""><figcaption></figcaption></figure>
 
 {% hint style="info" %}
 For more details on interpreting the Nethermind journalctl logs, head [here](https://docs.nethermind.io/nethermind/first-steps-with-nethermind/getting-started).
@@ -156,3 +166,9 @@ sudo systemctl enable nethermind.service
 ```
 Created symlink /etc/systemd/system/default.target.wants/nethermind.service → /etc/systemd/system/nethermind.service.
 ```
+
+## Resources:
+
+1. Releases: [https://github.com/NethermindEth/nethermind/releases](https://github.com/NethermindEth/nethermind/releases)
+2. Documentation: [https://docs.nethermind.io/](https://docs.nethermind.io/)
+3. Discord: [https://discord.gg/MFBrZrGM32](https://discord.gg/MFBrZrGM32)
