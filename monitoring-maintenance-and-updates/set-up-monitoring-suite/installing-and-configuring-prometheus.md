@@ -6,8 +6,8 @@
 
 ```bash
 cd
-curl -LO https://github.com/prometheus/prometheus/releases/download/v2.45.0/prometheus-2.45.0.linux-amd64.tar.gz
-echo "1c7f489a3cc919c1ed0df2ae673a280309dc4a3eaa6ee3411e7d1f4bdec4d4c5 prometheus-2.45.0.linux-amd64.tar.gz" | sha256sum --check
+curl -LO https://github.com/prometheus/prometheus/releases/download/v2.50.1/prometheus-2.50.1.linux-amd64.tar.gz
+echo "936f3777f8c3a4a90d3c58a6f410350d5932c79367b99771d002bd36e48bd05b prometheus-2.50.1.linux-amd64.tar.gz" | sha256sum --check
 ```
 
 {% hint style="info" %}
@@ -21,19 +21,18 @@ Make sure to choose the amd64 version. Right click on the linked text and select
 _**Expected output:** Verify output of the checksum verification_
 
 ```
-prometheus-2.45.0.linux-amd64.tar.gz: OK
+prometheus-2.50.1.linux-amd64.tar.gz: OK
 ```
 
 If checksum is verified, extract the files and move them into the `/usr/local/bin` and `/etc/prometheus` directories for neatness and best practice. Then, clean up the duplicated copies.
 
 ```bash
-tar xvf prometheus-2.45.0.linux-amd64.tar.gz
-sudo cp prometheus-2.45.0.linux-amd64/prometheus /usr/local/bin/
-sudo cp prometheus-2.45.0.linux-amd64/promtool /usr/local/bin/
-sudo cp -r prometheus-2.45.0.linux-amd64/consoles /etc/prometheus
-sudo cp -r prometheus-2.45.0.linux-amd64/console_libraries /etc/prometheus
-sudo rm prometheus-2.45.0.linux-amd64.tar.gz
-sudo rm -r prometheus-2.45.0.linux-amd64
+tar xvf prometheus-2.50.1.linux-amd64.tar.gz
+sudo cp prometheus-2.50.1.linux-amd64/prometheus /usr/local/bin/
+sudo cp prometheus-2.50.1.linux-amd64/promtool /usr/local/bin/
+sudo cp -r prometheus-2.50.1.linux-amd64/consoles /etc/prometheus
+sudo cp -r prometheus-2.50.1.linux-amd64/console_libraries /etc/prometheus
+sudo rm -r prometheus-2.50.1.linux-amd64 prometheus-2.50.1.linux-amd64.tar.gz
 ```
 
 ### Configure Prometheus&#x20;
@@ -60,7 +59,11 @@ sudo nano /etc/prometheus/prometheus.yml
 
 Paste the configuration parameters below into the file:
 
-```yaml
+**1) General + execution client parameters:**
+
+{% tabs %}
+{% tab title="Nethermind" %}
+```
 global:
   scrape_interval: 15s
 scrape_configs:
@@ -68,21 +71,80 @@ scrape_configs:
     static_configs:
       - targets:
           - localhost:9090
-	- job_name: node_exporter
+  - job_name: node_exporter
     static_configs:
       - targets:
           - localhost:9100
+  - job_name: nethermind
+    static_configs:
+      - targets:
+          - localhost:9091
+```
+{% endtab %}
+
+{% tab title="Besu" %}
+```
+global:
+  scrape_interval: 15s
+scrape_configs:
+  - job_name: prometheus
+    static_configs:
+      - targets:
+          - localhost:9090
+  - job_name: node_exporter
+    static_configs:
+      - targets:
+          - localhost:9100
+  - job_name: 'besu'
+    scrape_interval: 15s
+    scrape_timeout: 10s
+    metrics_path: /metrics
+    scheme: http
+    static_configs:
+      - targets:
+          - localhost:9545
+```
+{% endtab %}
+{% endtabs %}
+
+**2) Consensus client parameters:**
+
+According to your selected consensus client, append the following block to the general + exection client parameters above.
+
+{% tabs %}
+{% tab title="Teku" %}
+```
   - job_name: "teku-dev"
     scrape_timeout: 10s
     metrics_path: /metrics
     scheme: http
     static_configs:
       - targets: ["localhost:8008"]
-  - job_name: nethermind
-    static_configs:
-      - targets:
-          - localhost:9091
 ```
+{% endtab %}
+
+{% tab title="Nimbus" %}
+```
+  - job_name: 'Nimbus'
+    metrics_path: /metrics
+    static_configs:
+      - targets: ['localhost:8008']
+```
+{% endtab %}
+
+{% tab title="Lodestar" %}
+```
+  - job_name: 'lodestar_beacon'
+    metrics_path: /metrics
+    static_configs:
+      - targets: ['localhost:8008']
+  - job_name: 'lodestar_validator'
+    metrics_path: /metrics
+    static_configs:
+      - targets: ['localhost:5064']
+```
+{% endtab %}
+{% endtabs %}
 
 Once you're done, save with `Ctrl+O` and `Enter`, then exit with `Ctrl+X`.
 

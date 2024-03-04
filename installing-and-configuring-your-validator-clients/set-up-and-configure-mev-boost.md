@@ -97,7 +97,7 @@ Paste the configuration parameters below into the file:
 
 ```bash
 [Unit]
-Description=mev-boost (Holesky)
+Description=mev-boost (Mainnet)
 Wants=network-online.target
 After=network-online.target
 
@@ -124,7 +124,7 @@ Once you're done, save with `Ctrl+O` and `Enter`, then exit with `Ctrl+X`. Under
 
 **MEV Boost configuration summary:**
 
-1. `-holesky`: Run the MEV-boost service on the Holesky testnet
+1. `-mainnet`: Run the MEV-boost service on the mainnet
 2. `-min-bid`: Set the threshold to accept blocks from relays if they bid above a chosen value, otherwise propose a locally-built block. This sacrifices a small \~0.1% APR in exchange for much better censorship resistance, allowing you to use OFAC-compliant relays guilt-free! More information [here](https://writings.flashbots.net/the-cost-of-resilience/)
 3. `-relay-check`: check relay status on startup and on the status API call
 4. `-relay`: A chosen relay URL. Choose your preferred ones here - [https://github.com/eth-educators/ethstaker-guides/blob/main/MEV-relay-list.md](https://github.com/eth-educators/ethstaker-guides/blob/main/MEV-relay-list.md)
