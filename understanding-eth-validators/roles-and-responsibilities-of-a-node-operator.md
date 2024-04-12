@@ -6,7 +6,7 @@ In short, validator nodes on the Ethereum network _**process transactions and se
 
 In exchange for doing the work above, validators receive rewards from both users and the Ethereum protocol directly. However, if validators are **caught acting dishonestly** by other nodes in the network, **their stake is slashed** - forcibly burning their 32 ETH based on the severity of their actions. This mechanism is further explained in the [Rewards and penalties sub-section](rewards-and-penalties.md).
 
-<figure><img src="../.gitbook/assets/image.png" alt=""><figcaption><p>Source: <a href="https://github.com/flashbots/mev-boost">https://github.com/flashbots/mev-boost</a></p></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (2).png" alt=""><figcaption><p>Source: <a href="https://github.com/flashbots/mev-boost">https://github.com/flashbots/mev-boost</a></p></figcaption></figure>
 
 Let's examine the value chain of the ETH validator network to understand this process in more detail.
 
