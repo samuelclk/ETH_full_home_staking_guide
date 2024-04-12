@@ -1,4 +1,4 @@
-# Roles of a node operator
+# Roles & Responsibilities of a node operator
 
 ## What do validator nodes actually do?
 
@@ -20,3 +20,17 @@ Let's examine the value chain of the ETH validator network to understand this pr
 6. A committee of validators (the Beacon Committee) is chosen randomly to determine this new block's validity within the remaining \~8 seconds.
 7. Once the new block is proposed and sufficiently attested to, it is added to the blockchain.
 8. At the end of every 2 epochs, all prior transactions are finalised and can no longer be reversed without burning a large portion of staked ETH across the whole network.
+
+## The responsibility
+
+Running an ETH validator node is a long-term commitment. Your staked ETH will not be liquid while it is being staked, and there will be a lead time for both entering and exiting the validator queue.
+
+Once your validator is activated, you must try to keep it running 24/7, and there will be penalties for inactivity or going offline.
+
+This means you must invest in adequate hardware, a suitable space/environment to run your validator node, and time to periodically monitor/maintain/troubleshoot your node.
+
+You will also need to keep up with the latest developments in your execution and consensus client software and the overall Ethereum consensus mechanism.&#x20;
+
+## The skillsets required
+
+<figure><img src="../.gitbook/assets/image (56).png" alt=""><figcaption></figcaption></figure>

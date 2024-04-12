@@ -6,8 +6,7 @@
 ## Understanding ETH validators&#x20;
 
 * [Why bother with home-staking?](understanding-eth-validators/why-bother-with-home-staking.md)
-* [Roles of a node operator](understanding-eth-validators/roles-of-a-node-operator.md)
-* [Responsibilities of a node operator](understanding-eth-validators/responsibilities-of-a-node-operator.md)
+* [Roles & Responsibilities of a node operator](understanding-eth-validators/roles-and-responsibilities-of-a-node-operator.md)
 * [Rewards and penalties](understanding-eth-validators/rewards-and-penalties.md)
 
 ## Choosing your validator clients
