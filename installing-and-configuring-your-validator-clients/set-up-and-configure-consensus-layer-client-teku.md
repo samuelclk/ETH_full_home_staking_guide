@@ -12,8 +12,8 @@ sudo apt install openjdk-17-jdk
 
 ```bash
 cd
-curl -LO https://artifacts.consensys.net/public/teku/raw/names/teku.tar.gz/versions/24.2.0/teku-24.2.0.tar.gz
-echo "f7da4109b180e1f1118d6fa13e4d48a964d0f58724d1e6d3fd4a92ddccabab58 teku-24.2.0.tar.gz" | sha256sum --check
+curl -LO https://artifacts.consensys.net/public/teku/raw/names/teku.tar.gz/versions/24.3.1/teku-24.3.1.tar.gz
+echo "c0d1754569223e01c4ccab4a3adac8cd120586b8c9806aa32161189e6b4109b5 teku-24.3.1.tar.gz" | sha256sum --check
 ```
 
 {% hint style="info" %}
@@ -27,15 +27,15 @@ Make sure to choose the amd64 version. Right click on the linked text and select
 _**Expected output:** Verify output of the checksum verification._
 
 ```
-teku-24.2.0.tar.gz: OK
+teku-24.3.1.tar.gz: OK
 ```
 
 If checksum is verified, extract the files and move them into the `(/usr/local/bin)` directory for neatness and best practice. Then, clean up the duplicated copies.
 
 ```bash
-tar xvf teku-24.2.0.tar.gz
-sudo cp -a teku-24.2.0 /usr/local/bin/teku
-rm -r teku-24.2.0.tar.gz teku-24.2.0
+tar xvf teku-24.3.1.tar.gz
+sudo cp -a teku-24.3.1 /usr/local/bin/teku
+rm -r teku-24.3.1.tar.gz teku-24.3.1
 ```
 
 ## Configure the Teku Consensus Client
