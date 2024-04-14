@@ -6,6 +6,10 @@ However, if every node runs only on one single client set, the existence of craz
 
 When this happens, we as validator node operators will suffer penalties. **These penalties increase exponentially when our validator nodes go offline together with a large portion of the network.**&#x20;
 
+Looking at the chart below, correlation penalties involving 33% or more of the network will result in all of your staked ETH being slashed!
+
+<figure><img src="../.gitbook/assets/image (92).png" alt=""><figcaption></figcaption></figure>
+
 This is why there are at least 4 - 5 clients to choose from for execution layer and consensus layer clients today. With Geth owning more than 50% of the execution layer client market share today, the existence of a crazy bug causing validator nodes running Geth to double-sign will be slashed for their entire stake of 32 ETH.&#x20;
 
 This is why we will be recommending minority clients for this guide.

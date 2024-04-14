@@ -24,11 +24,3 @@ Despite being catered towards home-staking, running an ETH validator node reliab
 6. Miscellaneous: 3x CAT7 LAN cables, 2x new 8GB USB drive
 
 The full set above should cost around **SGD1450 or USD1067**
-
-## Cost considerations
-
-1. **Revenue:** A single ETH validator will generate between 4.5% (median) to 5.7% (mean) yield. At ETH price = USD1600, this will give you an income of between USD2304 to USD2918 per year.
-2. **Cost:** The hardware cost described here is around USD1067 and electricity is negligible at around USD90 (SGD120) per year
-3. **Payback Period:** Around 5 months
-
-**However, you will be able to run your node with as many validator keys (32 ETH each) on just a single set of hardware** - e.g. running with 2 validator keys doubles your revenue without increasing your cost base. As a result, this halves your payback period.
