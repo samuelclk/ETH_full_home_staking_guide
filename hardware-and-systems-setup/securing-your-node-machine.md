@@ -204,3 +204,28 @@ _**Finally, restart the service:**_
 sudo systemctl restart unattended-upgrades
 ```
 
+#### Check the logs for any warnings:
+
+```sh
+sudo cat /var/log/unattended-upgrades/unattended-upgrades.log
+```
+
+If you see following warnings, proceed to the next step.
+
+```
+2024-02-01 04:48:24,012 WARNING System is on battery power, stopping
+2024-02-01 06:19:01,972 WARNING System is on battery power, stopping
+2024-02-01 17:53:48,650 WARNING System is on battery power, stopping
+```
+
+If your device is definitely connected to a power source, amend the `50unattended-upgrades` file directly.
+
+```
+sudo nano /etc/apt/apt.conf.d/50unattended-upgrades
+```
+
+Look for the following line and uncomment it by removing the `//` prefix.
+
+```
+// Unattended-Upgrade::OnlyOnACPower "false";
+```

@@ -120,6 +120,13 @@ According to your selected consensus client, append the following block to the g
     scheme: http
     static_configs:
       - targets: ["localhost:8008"]
+      
+  - job_name: "teku-validator" #for validator client
+    scrape_timeout: 10s
+    metrics_path: /metrics
+    scheme: http
+    static_configs:
+      - targets: ["localhost:8108"]
 ```
 {% endtab %}
 

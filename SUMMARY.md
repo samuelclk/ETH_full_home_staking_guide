@@ -18,8 +18,8 @@
 
 * [Setup Overview](hardware-and-systems-setup/setup-overview.md)
 * [Hardware & system requirements](hardware-and-systems-setup/hardware-and-system-requirements.md)
-* [Networking & Security](hardware-and-systems-setup/networking-and-security.md)
 * [Assemble your hardware](hardware-and-systems-setup/assemble-your-hardware.md)
+* [Networking & Security](hardware-and-systems-setup/networking-and-security.md)
 * [Install the OS](hardware-and-systems-setup/install-the-os.md)
 * [Securing your node machine](hardware-and-systems-setup/securing-your-node-machine.md)
 
@@ -29,6 +29,7 @@
 * [Prepare the operating system](installing-and-configuring-your-validator-clients/prepare-the-operating-system.md)
 * [Set up and configure execution layer client (Nethermind)](installing-and-configuring-your-validator-clients/set-up-and-configure-execution-layer-client-nethermind.md)
 * [Set up and configure consensus layer client (Teku)](installing-and-configuring-your-validator-clients/set-up-and-configure-consensus-layer-client-teku.md)
+* [Setup & Configure validator client (Teku)](installing-and-configuring-your-validator-clients/setup-and-configure-validator-client-teku.md)
 * [Set up and configure MEV-boost](installing-and-configuring-your-validator-clients/set-up-and-configure-mev-boost.md)
 
 ## Depositing 32 ETH into your validator
